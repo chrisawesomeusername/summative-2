@@ -1,0 +1,15 @@
+* {
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  margin: none;
+  padding: none; }
+
+.banner-section {
+  height: 100px; }
+  .banner-section img {
+    height: inherit;
+    width: 100%;
+    object-fit: cover; }
+
+/*# sourceMappingURL=style.css.map */
