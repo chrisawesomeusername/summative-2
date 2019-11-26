@@ -12,6 +12,11 @@
     width: 100%;
     object-fit: cover; }
 
+.nav-link {
+  padding: 0px; }
+  .nav-link .main-logo {
+    width: 60%; }
+
 .filter-tool-section {
   font-size: 12px; }
 
@@ -25,7 +30,7 @@
   border-left: solid #DEDEDE 2px; }
 
 #people {
-  height: 22px;
+  height: 30px;
   padding: 0px;
   color: black;
   border: none; }
@@ -33,9 +38,11 @@
 #startDate, #endDate {
   float: right;
   width: 100%;
-  padding-left: 4px; }
+  height: 30px;
+  padding-left: 7px; }
 
 #calcDate {
-  background-color: #169BCC; }
+  background-color: #169BCC;
+  margin-top: 15px; }
 
 /*# sourceMappingURL=style.css.map */

@@ -50,35 +50,25 @@ $("#startDate").datepicker({
       var selectedDate = new Date(date);
       var msecsInADay = 86400000;
       var stDate = new Date(selectedDate.getTime() + msecsInADay);
-
      //Set Minimum Date of EndDatePicker After Selected Date of StartDatePicker
       $("#endDate").datepicker( "option", "minDate", stDate );
       var enDate = new Date(selectedDate.getTime() + 15 * msecsInADay);
-
-
       $("#endDate").datepicker( "option", "maxDate", enDate );
-
   }
 });
-
 $("#endDate").datepicker({
   dateFormat: 'yy-mm-dd',
   changeMonth: true
 });
-
 //Find the number of days between dates
 function dateDiff() {
 
   var start = $('#startDate').datepicker('getDate');
   var end = $('#endDate').datepicker('getDate');
   var days   = (end - start)/1000/60/60/24;
-
-
-  document.getElementById("dateResult").value = days ;
-  return;
+  //amount of days selected
+  console.log(days);
 }
-
-
 $('#calcDate').click(function(){
   dateDiff();
 });
