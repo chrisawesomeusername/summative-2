@@ -1,2 +1,34 @@
 @import 'reset';
 @import 'images';
+@import 'text';
+
+
+
+
+
+
+
+// temporary style section
+.filter-tool-content{
+  background-color: #EEECED;
+}
+.booking-dropdown{
+  border-left: solid #DEDEDE 2px;
+}
+#people{
+  height: 22px;
+  padding: 0px;
+  color: black;
+  border: none;
+}
+
+
+#startDate, #endDate{
+  float: right;
+  width: 100%;
+  padding-left: 4px;
+}
+
+#calcDate{
+  background-color: #169BCC;
+}
