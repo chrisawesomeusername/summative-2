@@ -1,7 +1,9 @@
 console.log('heyooooo');
-var accomodationArray = [
+var accommodationArray = [
   {
     ref: 101,
+    name: '',
+    image: 'images/hilton.jpg',
     type: 'hotel',
     minPeople: 1,
     maxPeople: 2,
@@ -39,7 +41,7 @@ var accomodationArray = [
 ]
 
 
-
+//----------------------date picker-----------------------//
 $("#startDate").datepicker({
   dateFormat: 'yy-mm-dd',
   changeMonth: true,
@@ -68,7 +70,59 @@ function dateDiff() {
   var days   = (end - start)/1000/60/60/24;
   //amount of days selected
   console.log(days);
+  return days;
 }
-$('#calcDate').click(function(){
-  dateDiff();
+// $('#calcDate').click(function(){
+//   dateDiff();
+// });
+//----------------------end date picker-----------------------//
+//----------------------display array-------------------------//
+function myArray(){
+  document.getElementById('arraySection').innerHTML = '';
+  for (var i = 0; i < accommodationArray.length; i++) {
+    console.log(accommodationArray.length);
+    if (parseInt(people) >= accommodationArray[i].maxPeople) {
+
+    }
+    displayArray(i);
+  }
+
+};
+myArray();
+
+function displayArray(j){
+  document.getElementById('arraySection').innerHTML
+  += '<div class="card p-2 mb-2">'
+    + '<div class="row">'
+      + '<div class="col-5 p-0">'
+        + '<img class="rounded arrayImg" src="' + accommodationArray[j].image + '"alt="image"/>'
+      + '</div>'
+      + '<div class="col-7 p-0">'
+        + '<div class="card-block px-3">'
+          + '<p class="card-title">' + accommodationArray[j].ref + '</p>'
+          + '<p class="card-title">$' + accommodationArray[j].price + ' per night</p>'
+          + '<p class="card-text">test</p>'
+          + '<a href="#" class="btn btn-sm btn-primary border-0">Read More</a>'
+          + '</div>'
+        + '</div>'
+      + '</div>'
+    + '</div>'
+
+};
+
+document.getElementById('calcDate').addEventListener('click',function(){
+  var people = document.getElementById('people').value;
+  var days = dateDiff();
+  console.log(people);
+  console.log(days);
+  document.getElementById('arraySection').innerHTML = '';
+  for (var i = 0; i < accommodationArray.length; i++) {
+    console.log(accommodationArray.length);
+    if ((parseInt(people) >= accommodationArray[i].minPeople)
+    && (parseInt(people) <= accommodationArray[i].maxPeople)
+    && (days >= accommodationArray[i].minStay)
+    && (days <= accommodationArray[i].maxStay)){
+      displayArray(i);
+    }
+  }
 });

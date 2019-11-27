@@ -17,10 +17,19 @@
   .nav-link .main-logo {
     width: 60%; }
 
+.arrayImg {
+  width: 100%;
+  height: 125px;
+  object-fit: cover;
+  object-position: 0% 30%; }
+
 .filter-tool-section {
   font-size: 12px; }
 
 #people {
+  font-size: 12px; }
+
+#arraySection {
   font-size: 12px; }
 
 .filter-tool-content {
@@ -41,8 +50,11 @@
   height: 30px;
   padding-left: 7px; }
 
-#calcDate {
+.btn {
   background-color: #169BCC;
   margin-top: 15px; }
+
+.card {
+  border-bottom: solid #DEDEDE 2px; }
 
 /*# sourceMappingURL=style.css.map */
