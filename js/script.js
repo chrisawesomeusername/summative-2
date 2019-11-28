@@ -1,8 +1,8 @@
 console.log('heyooooo');
 var accommodationArray = [
   {
-    ref: 101,
-    name: '',
+    ref: 'a1',
+    name: 'hilton hotel',
     image: 'images/hilton.jpg',
     type: 'hotel',
     minPeople: 1,
@@ -12,7 +12,9 @@ var accommodationArray = [
     maxStay: 5,
   },
   {
-    ref: 102,
+    ref: 'a2',
+    name: 'nomads hostel',
+    image: 'images/nomads.jpg',
     type: 'hostel',
     minPeople: 1,
     maxPeople: 1,
@@ -21,7 +23,9 @@ var accommodationArray = [
     maxStay: 10
   },
   {
-    ref: 103,
+    ref: 'a3',
+    name: 'waikanae beach motel',
+    image: 'images/waikanae-beach.jpg',
     type: 'motel',
     minPeople: 2,
     maxPeople: 4,
@@ -30,7 +34,9 @@ var accommodationArray = [
     maxStay: 10
   },
   {
-    ref: 104,
+    ref: 'a4',
+    name: 'is a house',
+    image: 'images/house.jpg',
     type: 'house',
     minPeople: 1,
     maxPeople: 4,
@@ -38,7 +44,7 @@ var accommodationArray = [
     minStay: 2,
     maxStay: 15
   },
-]
+];
 
 
 //----------------------date picker-----------------------//
@@ -81,35 +87,37 @@ function myArray(){
   document.getElementById('arraySection').innerHTML = '';
   for (var i = 0; i < accommodationArray.length; i++) {
     console.log(accommodationArray.length);
+    console.log(accommodationArray[i].ref);
     if (parseInt(people) >= accommodationArray[i].maxPeople) {
-
     }
     displayArray(i);
   }
-
-};
+}
 myArray();
 
+
 function displayArray(j){
+  var id = 1;
   document.getElementById('arraySection').innerHTML
-  += '<div class="card p-2 mb-2">'
-    + '<div class="row">'
+  += '<div class="card rounded-0 p-2 mb-2">'
+    + '<div class="row m-0">'
       + '<div class="col-5 p-0">'
-        + '<img class="rounded arrayImg" src="' + accommodationArray[j].image + '"alt="image"/>'
+        + '<img id="a'+id.toString()+'"class="array-img" src="' + accommodationArray[j].image + '"alt="image"/>'
       + '</div>'
       + '<div class="col-7 p-0">'
-        + '<div class="card-block px-3">'
-          + '<p class="card-title">' + accommodationArray[j].ref + '</p>'
-          + '<p class="card-title">$' + accommodationArray[j].price + ' per night</p>'
-          + '<p class="card-text">test</p>'
-          + '<a href="#" class="btn btn-sm btn-primary border-0">Read More</a>'
-          + '</div>'
+        + '<div class="card-block pr-0">'
+          + '<p class="card-title m-0">' + accommodationArray[j].ref + '</p>'
+          + '<p class="card-title m-0">$' + accommodationArray[j].price + ' per night</p>'
+          + '<p class="card-text m-0">' + accommodationArray[j].name + '</p>'
+          + '<a href="#" class="btn btn-sm btn-primary border-0 m-0">Read More</a>'
         + '</div>'
       + '</div>'
     + '</div>'
-
-};
-
+  + '</div>';
+  id++
+}
+//----------------------end display array-------------------------//
+//----------------------filter tool-------------------------//
 document.getElementById('calcDate').addEventListener('click',function(){
   var people = document.getElementById('people').value;
   var days = dateDiff();
@@ -117,7 +125,7 @@ document.getElementById('calcDate').addEventListener('click',function(){
   console.log(days);
   document.getElementById('arraySection').innerHTML = '';
   for (var i = 0; i < accommodationArray.length; i++) {
-    console.log(accommodationArray.length);
+    // console.log(accommodationArray.length);
     if ((parseInt(people) >= accommodationArray[i].minPeople)
     && (parseInt(people) <= accommodationArray[i].maxPeople)
     && (days >= accommodationArray[i].minStay)
@@ -125,4 +133,13 @@ document.getElementById('calcDate').addEventListener('click',function(){
       displayArray(i);
     }
   }
+});
+//----------------------end filter tool-------------------------//
+//----------------------display modal-------------------------//
+$('.array-img').on('click', function(){
+  $('.myModal').show();
+  console.log(this.id);
+});
+$('.closeBar').on('click', function(){
+  $('.myModal').hide();
 });
