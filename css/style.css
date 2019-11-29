@@ -35,6 +35,20 @@
 .card-block {
   text-align: right; }
 
+#nav-tab {
+  background-color: #169BCC; }
+
+.nav-item {
+  color: white; }
+
+.closeBar {
+  color: white; }
+
+.modal-img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover; }
+
 .filter-tool-content {
   background-color: #EEECED; }
 
@@ -65,13 +79,13 @@
   margin-left: 10px;
   margin-right: 10px; }
 
-.myModal {
+.my-modal {
   display: none;
   z-index: 5;
   position: fixed;
-  top: 40px;
+  top: 0px;
   background-color: white;
-  width: 100%;
-  height: 200px; }
+  width: 100vw;
+  height: 100vh; }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,9 +1,12 @@
 .banner-section{
   height: 100px;
+  // position: fixed;
+  // z-index: 2;
   img{
     height: inherit;
     width: 100%;
     object-fit: cover;
+    // position: fixed;
   }
 }
 .nav-link{

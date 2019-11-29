@@ -97,24 +97,26 @@ myArray();
 
 
 function displayArray(j){
-  var id = 1;
+  // var id = 1;
   document.getElementById('arraySection').innerHTML
   += '<div class="card rounded-0 p-2 mb-2">'
     + '<div class="row m-0">'
       + '<div class="col-5 p-0">'
-        + '<img id="a'+id.toString()+'"class="array-img" src="' + accommodationArray[j].image + '"alt="image"/>'
+        + '<img id="' + accommodationArray[j].ref + '"class="array-img" src="' + accommodationArray[j].image + '"alt="image"/>'
       + '</div>'
       + '<div class="col-7 p-0">'
         + '<div class="card-block pr-0">'
-          + '<p class="card-title m-0">' + accommodationArray[j].ref + '</p>'
+          + '<p class="card-title m-0">' + accommodationArray[j].name + '</p>'
           + '<p class="card-title m-0">$' + accommodationArray[j].price + ' per night</p>'
-          + '<p class="card-text m-0">' + accommodationArray[j].name + '</p>'
           + '<a href="#" class="btn btn-sm btn-primary border-0 m-0">Read More</a>'
         + '</div>'
       + '</div>'
     + '</div>'
   + '</div>';
-  id++
+  // id++
+  // console.log(id);
+  openModal();
+
 }
 //----------------------end display array-------------------------//
 //----------------------filter tool-------------------------//
@@ -123,6 +125,13 @@ document.getElementById('calcDate').addEventListener('click',function(){
   var days = dateDiff();
   console.log(people);
   console.log(days);
+  if (people === null || days === 0) {
+    alert ('please enter details')
+  } else {
+    alert('you have chosen ' + people + ' people ' + 'and ' + days + ' days')
+  }
+
+
   document.getElementById('arraySection').innerHTML = '';
   for (var i = 0; i < accommodationArray.length; i++) {
     // console.log(accommodationArray.length);
@@ -134,12 +143,32 @@ document.getElementById('calcDate').addEventListener('click',function(){
     }
   }
 });
+// document.getElementById('calcDate').addEventListener('click',function(){
+//   for (var i = 0; i < accommodationArray.length; i++) {
+//     if (people === undefined && days === undefined){
+//     }
+//   }
+  // console.log('help');
+  // alert('enter details');
+// });
 //----------------------end filter tool-------------------------//
 //----------------------display modal-------------------------//
-$('.array-img').on('click', function(){
-  $('.myModal').show();
-  console.log(this.id);
-});
+function openModal(){
+  $('.array-img').on('click', function(){
+      console.log(this.id);
+      document.getElementById('navDetails').innerHTML = ' '
+    for (var i = 0; i < accommodationArray.length; i++) {
+      if (this.id === accommodationArray[i].ref) {
+        document.getElementById('navDetails').innerHTML =
+        '<img id="' + accommodationArray[i].ref + '"class="modal-img" src="' + accommodationArray[i].image + '"alt="image"/>'
+        document.getElementById('modalContentBottom').innerHTML =
+        '<p>' + accommodationArray[i].price + '</p>'
+      }
+    }
+      $('.my-modal').show();
+  });
+}
 $('.closeBar').on('click', function(){
-  $('.myModal').hide();
+  $('.my-modal').hide();
 });
+//--------------------end display modal-------------------------//
