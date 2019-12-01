@@ -16,7 +16,7 @@
   <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
       <ul class="navbar-nav">
-        <li class="nav-item active">
+        <li class="active">
           <a class="nav-link" href="index.html"><img src="images/pure-new-zealand-logo.svg" class="main-logo" alt=""></a>
         </li>
       </ul>
@@ -56,10 +56,10 @@
     <div id="arraySection" class="">
     </div>
 
-    <div class="my-modal">
+    <div class="my-modal" id="">
       <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <ul class="navbar-nav">
-          <li class="nav-item active">
+          <li class="active">
             <a class="nav-link" href="index.html"><img src="images/pure-new-zealand-logo.svg" class="main-logo" alt=""></a>
           </li>
         </ul>
@@ -69,7 +69,7 @@
       </nav>
 
       <div id="modalContentTop" class="">
-        <div id="tabs">
+        <div id="tabs" class="">
         	<div class="container">
         		<div class="row">
         			<div class="col-xs-12">
@@ -80,13 +80,11 @@
                   </div>
         				</div>
         				<nav>
-        					<div class="p-1 nav nav-fill" id="navTab" role="tablist">
+        					<div class="p-0 nav nav-fill" id="navTab" role="tablist">
         						<a class="nav-item nav-link active" id="navDetailsTab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Photos</a>
         						<a class="nav-item nav-link" id="navMapTab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-map" aria-selected="false">Map</a>
         					</div>
         				</nav>
-
-
         			</div>
         		</div>
         	</div>
@@ -95,8 +93,23 @@
 
 
 
-      <div id="modalContentBottom" class="">
+      <div id="modalContentBottom" class="m-3">
+        <div id="modalDetails">
+        </div>
+        <div class="food-select">
+          <div class="checkbox">
+            <label><input type="checkbox" value="breakfast">breakfast</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="lunch">lunch</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="dinner">dinner</label>
+          </div>
+        </div>
+        <a href="#" class="btn btn-sm btn-primary border-0 m-0">Book Now</a>
       </div>
+    </div>
 
 
 

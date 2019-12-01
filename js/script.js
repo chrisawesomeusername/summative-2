@@ -5,6 +5,9 @@ var accommodationArray = [
     name: 'hilton hotel',
     image: 'images/hilton.jpg',
     type: 'hotel',
+    description: 'Sleek rooms, gorgeous views, the perfect location - have it all at Hilton Auckland. Our waterfront hotel has sundecks, private balconies and walls of windows for views of the harbour you won\'t find anywhere else. We\'re a quick walk from the central business district and Quay Street restaurants, shops and nightlife. Our 24-hour concierge team is happy to set up sightseeing tours during your stay.',
+    location: 'auckland',
+    // longAndLat : {lat : ,lng : },
     minPeople: 1,
     maxPeople: 2,
     price: 157,
@@ -16,6 +19,9 @@ var accommodationArray = [
     name: 'nomads hostel',
     image: 'images/nomads.jpg',
     type: 'hostel',
+    description: '',
+    location: '',
+    // longAndLat : {lat : ,lng : },
     minPeople: 1,
     maxPeople: 1,
     price: 30,
@@ -27,6 +33,9 @@ var accommodationArray = [
     name: 'waikanae beach motel',
     image: 'images/waikanae-beach.jpg',
     type: 'motel',
+    description: '',
+    location: '',
+    // longAndLat : {lat : ,lng : },
     minPeople: 2,
     maxPeople: 4,
     price: 90,
@@ -38,6 +47,9 @@ var accommodationArray = [
     name: 'is a house',
     image: 'images/house.jpg',
     type: 'house',
+    description: '',
+    location: '',
+    // longAndLat : {lat : ,lng : },
     minPeople: 1,
     maxPeople: 4,
     price: 240,
@@ -127,6 +139,7 @@ document.getElementById('calcDate').addEventListener('click',function(){
   console.log(days);
   if (people === null || days === 0) {
     alert ('please enter details')
+    displayArray(i)
   } else {
     alert('you have chosen ' + people + ' people ' + 'and ' + days + ' days')
   }
@@ -143,14 +156,6 @@ document.getElementById('calcDate').addEventListener('click',function(){
     }
   }
 });
-// document.getElementById('calcDate').addEventListener('click',function(){
-//   for (var i = 0; i < accommodationArray.length; i++) {
-//     if (people === undefined && days === undefined){
-//     }
-//   }
-  // console.log('help');
-  // alert('enter details');
-// });
 //----------------------end filter tool-------------------------//
 //----------------------display modal-------------------------//
 function openModal(){
@@ -161,14 +166,20 @@ function openModal(){
       if (this.id === accommodationArray[i].ref) {
         document.getElementById('navDetails').innerHTML =
         '<img id="' + accommodationArray[i].ref + '"class="modal-img" src="' + accommodationArray[i].image + '"alt="image"/>'
-        document.getElementById('modalContentBottom').innerHTML =
-        '<p>' + accommodationArray[i].price + '</p>'
+        document.getElementById('modalDetails').innerHTML =
+        '<p class="mb-0" id="modalTitle">' + accommodationArray[i].name + '</p>'
+        + '<p class="modal-location-text">' + accommodationArray[i].location + '</p>'
+        + '<p>$' + accommodationArray[i].price + ' per night</p>'
+        + '<p>' + accommodationArray[i].description + '</p>'
+
       }
     }
       $('.my-modal').show();
+      $('#arraySection').hide();
   });
 }
 $('.closeBar').on('click', function(){
   $('.my-modal').hide();
+  $('#arraySection').show();
 });
 //--------------------end display modal-------------------------//

@@ -25,6 +25,20 @@
 }
 .modal-img{
   width: 100%;
-  height: 400px;
+  height: 250px;
   object-fit: cover;
+}
+
+.nav-item{
+  color: white;
+  background-color: #169BCC;
+}
+
+#modalContentBottom{
+  background: white;
+  height: 100%;
+}
+
+.food-select{
+  // display: inline-block;
 }
