@@ -114,7 +114,8 @@ function displayArray(j){
   += '<div class="card rounded-0 p-2 mb-2">'
     + '<div class="row m-0">'
       + '<div class="col-5 p-0">'
-        + '<img id="' + accommodationArray[j].ref + '"class="array-img" src="' + accommodationArray[j].image + '"alt="image"/>'
+        + '<img id="' + accommodationArray[j].ref + '"class="array-img" src="'
+        + accommodationArray[j].image + '"alt="image"/>'
       + '</div>'
       + '<div class="col-7 p-0">'
         + '<div class="card-block pr-0">'
@@ -130,11 +131,13 @@ function displayArray(j){
   openModal();
 
 }
+var people;
+var days;
 //----------------------end display array-------------------------//
 //----------------------filter tool-------------------------//
-document.getElementById('calcDate').addEventListener('click',function(){
-  var people = document.getElementById('people').value;
-  var days = dateDiff();
+document.getElementById('calcDate').addEventListener('click', function(){
+  people = document.getElementById('people').value;
+  days = dateDiff();
   console.log(people);
   console.log(days);
   if (people === null || days === 0) {
@@ -162,16 +165,34 @@ function openModal(){
   $('.array-img').on('click', function(){
       console.log(this.id);
       document.getElementById('navDetails').innerHTML = ' '
+      var foodValue
+      var foodSum = 0;
+
+      var checkboxArray = document.querySelectorAll('input[type=checkbox]:checked');
+      console.log(checkboxArray);
+      for (var i = 0; i < checkboxArray.length; i++) {
+        foodValue = parseInt(checkboxArray[i].value)
+
+        console.log(foodValue);
+        foodSum = foodSum + foodValue;
+
+      }
+
     for (var i = 0; i < accommodationArray.length; i++) {
       if (this.id === accommodationArray[i].ref) {
+  console.log(foodSum);
+        console.log(days);
+         var totalPrice = (accommodationArray[i].price + foodSum) * days;
+
         document.getElementById('navDetails').innerHTML =
-        '<img id="' + accommodationArray[i].ref + '"class="modal-img" src="' + accommodationArray[i].image + '"alt="image"/>'
+        '<img id="' + accommodationArray[i].ref + '"class="modal-img" src="'
+        + accommodationArray[i].image + '"alt="image"/>'
         document.getElementById('modalDetails').innerHTML =
         '<p class="mb-0" id="modalTitle">' + accommodationArray[i].name + '</p>'
         + '<p class="modal-location-text">' + accommodationArray[i].location + '</p>'
         + '<p>$' + accommodationArray[i].price + ' per night</p>'
         + '<p>' + accommodationArray[i].description + '</p>'
-
+            + '<p>$' + totalPrice + ' total</p>'
       }
     }
       $('.my-modal').show();
@@ -183,3 +204,7 @@ $('.closeBar').on('click', function(){
   $('#arraySection').show();
 });
 //--------------------end display modal-------------------------//
+//--------------------confirm booking-------------------------//
+document.getElementById('bookBtn').addEventListener('click', function(){
+
+})

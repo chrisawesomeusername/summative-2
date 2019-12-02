@@ -50,8 +50,9 @@
   display: none;
   z-index: 5;
   position: absolute;
+  // overflow-y: auto;
   top: 0px;
   background-color: white;
   width: 100vw;
-  height: 100vh;
+  // height: 100vh;
 }
