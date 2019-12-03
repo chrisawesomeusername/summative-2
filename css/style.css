@@ -60,6 +60,10 @@
   height: 250px;
   object-fit: cover; }
 
+#navMap {
+  height: 250px;
+  width: 100vw; }
+
 .nav-item {
   color: white;
   background-color: #169BCC; }
@@ -67,6 +71,10 @@
 #modalContentBottom {
   background: white;
   height: 100%; }
+
+.confirm-section {
+  display: none;
+  height: 100vh; }
 
 .filter-tool-content {
   background-color: #EEECED; }

@@ -88,17 +88,18 @@
         <div id="tabs" class="">
         	<div class="container">
         		<div class="row">
-        			<div class="col-xs-12">
+        			<div class="">
                 <div class="tab-content " id="navTabContent">
-        					<div class="tab-pane fade show active" id="navDetails" role="tabpanel" aria-labelledby="nav-details-tab">
-                  </div>
-        					<div class="tab-pane fade" id="navMap" role="tabpanel" aria-labelledby="nav-map-tab">
-                  </div>
+                  <!-- where the map and photos go -->
+        					<div class="tab-pane fade show active" id="navDetails" role="tabpanel" aria-labelledby="nav-details-tab"></div>
+        					<div class="tab-pane fade" id="navMap" role="tabpanel" aria-labelledby="nav-map-tab"></div>
+
         				</div>
         				<nav class="p-2" id="navTab">
         					<div class="nav nav-fill" role="tablist">
-        						<a class="nav-item nav-link active" id="navDetailsTab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Photos</a>
-        						<a class="nav-item nav-link" id="navMapTab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-map" aria-selected="false">Map</a>
+                    <!-- links to switch between map and photos sections -->
+        						<a class="nav-item nav-link active" id="navDetailsTab" data-toggle="tab" href="#navDetails" role="tab" aria-controls="nav-home" aria-selected="true">Photos</a>
+        						<a class="nav-item nav-link" id="navMapTab" data-toggle="tab" href="#navMap" role="tab" aria-controls="nav-map" aria-selected="false">Map</a>
         					</div>
         				</nav>
         			</div>
@@ -107,13 +108,17 @@
         </div>
       </div>
 
-
-
       <div id="modalContentBottom" class="m-3">
         <div id="modalDetails">
         </div>
-
         <a href="#" id="bookBtn" class="btn btn-sm btn-primary border-0 m-0">Book Now</a>
+      </div>
+      <div class="confirm-section bg-light">
+        <div class="container p-4">
+          <p>Here are your booking details</p>
+        </div>
+        <a href="#" id="changeDetailsBtn" class="btn btn-sm btn-primary border-0 m-0">change your selection</a>
+
       </div>
     </div>
 
@@ -126,6 +131,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="js/config.json" charset="utf-8"></script>
     <script src="js/script.js"></script>
   </body>
 </html>

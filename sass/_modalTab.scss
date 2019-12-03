@@ -29,6 +29,13 @@
   object-fit: cover;
 }
 
+
+#navMap{
+  height: 250px;
+  width: 100vw;
+}
+
+
 .nav-item{
   color: white;
   background-color: #169BCC;
@@ -41,4 +48,9 @@
 
 .food-select{
   // display: inline-block;
+}
+
+.confirm-section{
+  display: none;
+  height: 100vh;
 }

@@ -1,4 +1,15 @@
 console.log('heyooooo');
+
+var myKey = JSON.parse(apiKey);//convert json data into js object
+var map;//declaring map variable at the start of js to show it is a global variable
+
+//creating a script element dynamically to use the API key securely from the seperate JSON file
+var script = document.createElement('script');
+script.src = 'https://maps.googleapis.com/maps/api/js?key=' + myKey[0].key + '&callback=initMap';
+document.getElementsByTagName('body')[0].appendChild(script);
+
+
+
 var accommodationArray = [
   {
     ref: 'a1',
@@ -7,7 +18,7 @@ var accommodationArray = [
     type: 'hotel',
     description: 'Sleek rooms, gorgeous views, the perfect location - have it all at Hilton Auckland. Our waterfront hotel has sundecks, private balconies and walls of windows for views of the harbour you won\'t find anywhere else. We\'re a quick walk from the central business district and Quay Street restaurants, shops and nightlife. Our 24-hour concierge team is happy to set up sightseeing tours during your stay.',
     location: 'auckland',
-    // longAndLat : {lat : ,lng : },
+    longAndLat : {lat : -36.8395244 ,lng : 174.7636173 },
     minPeople: 1,
     maxPeople: 2,
     price: 157,
@@ -21,7 +32,7 @@ var accommodationArray = [
     type: 'hostel',
     description: '',
     location: '',
-    // longAndLat : {lat : ,lng : },
+    longAndLat : {lat : -36.845971 ,lng : 174.7651853},
     minPeople: 1,
     maxPeople: 1,
     price: 30,
@@ -164,9 +175,6 @@ function openModal(){
   $('.array-img').on('click', function(){
       console.log(this.id);
       document.getElementById('navDetails').innerHTML = ' '
-      document.getElementById('bookBtn').addEventListener('click', function(){
-        //scroll to confirm section goes here
-      });
     for (var i = 0; i < accommodationArray.length; i++) {
       if (this.id === accommodationArray[i].ref) {
         console.log(foodSum);
@@ -192,5 +200,27 @@ $('.closeBar').on('click', function(){
   $('.my-modal').hide();
   $('#arraySection').show();
 });
-//--------------------end display modal-------------------------//
-//--------------------confirm booking-------------------------//
+ //--------------------end display modal-------------------------//
+//---------------------confirm booking--------------------------//
+document.getElementById('bookBtn').addEventListener('click', function(){
+  $('.confirm-section').show();
+  $('html,body').animate({
+    scrollTop: $(".confirm-section").offset().top}, 'fast');
+    console.log(days);
+    console.log(people);
+    console.log(foodSum);
+    // console.log(totalPrice);
+    document.getElementById('changeDetailsBtn').addEventListener('click', function(){
+      $('.my-modal').hide();
+      $('#arraySection').show();
+    })
+});
+
+ //--------------------end confirm booking-----------------------//
+//---------------------maps-------------------------------------//
+function initMap() {
+  map = new google.maps.Map(document.getElementById('navMap'), {
+    center: {lat: -41.3052685, lng: 175.7267386},
+    zoom: 5
+  });
+}
