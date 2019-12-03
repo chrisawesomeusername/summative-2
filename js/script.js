@@ -59,6 +59,9 @@ var accommodationArray = [
 ];
 
 
+var people;
+var days;
+var foodSum = 0;
 //----------------------date picker-----------------------//
 $("#startDate").datepicker({
   dateFormat: 'yy-mm-dd',
@@ -66,14 +69,13 @@ $("#startDate").datepicker({
   minDate: new Date(),
   maxDate: '+1y',
   onSelect: function(date){
-
-      var selectedDate = new Date(date);
-      var msecsInADay = 86400000;
-      var stDate = new Date(selectedDate.getTime() + msecsInADay);
-     //Set Minimum Date of EndDatePicker After Selected Date of StartDatePicker
-      $("#endDate").datepicker( "option", "minDate", stDate );
-      var enDate = new Date(selectedDate.getTime() + 15 * msecsInADay);
-      $("#endDate").datepicker( "option", "maxDate", enDate );
+    var selectedDate = new Date(date);
+    var msecsInADay = 86400000;
+    var stDate = new Date(selectedDate.getTime() + msecsInADay);
+//Set Minimum Date of EndDatePicker After Selected Date of StartDatePicker
+    $("#endDate").datepicker( "option", "minDate", stDate );
+    var enDate = new Date(selectedDate.getTime() + 15 * msecsInADay);
+    $("#endDate").datepicker( "option", "maxDate", enDate );
   }
 });
 $("#endDate").datepicker({
@@ -82,17 +84,13 @@ $("#endDate").datepicker({
 });
 //Find the number of days between dates
 function dateDiff() {
-
   var start = $('#startDate').datepicker('getDate');
   var end = $('#endDate').datepicker('getDate');
-  var days   = (end - start)/1000/60/60/24;
-  //amount of days selected
+  days   = (end - start)/1000/60/60/24;
+//amount of days selected
   console.log(days);
   return days;
 }
-// $('#calcDate').click(function(){
-//   dateDiff();
-// });
 //----------------------end date picker-----------------------//
 //----------------------display array-------------------------//
 function myArray(){
@@ -106,10 +104,7 @@ function myArray(){
   }
 }
 myArray();
-
-
 function displayArray(j){
-  // var id = 1;
   document.getElementById('arraySection').innerHTML
   += '<div class="card rounded-0 p-2 mb-2">'
     + '<div class="row m-0">'
@@ -126,28 +121,32 @@ function displayArray(j){
       + '</div>'
     + '</div>'
   + '</div>';
-  // id++
-  // console.log(id);
-  openModal();
-
+openModal();
 }
-var people;
-var days;
 //----------------------end display array-------------------------//
 //----------------------filter tool-------------------------//
 document.getElementById('calcDate').addEventListener('click', function(){
   people = document.getElementById('people').value;
+  var checkboxArray = document.querySelectorAll('input[type=checkbox]:checked');
+  console.log(checkboxArray);
+  var foodValue = 0;
+  for (var i = 0; i < checkboxArray.length; i++) {
+    foodValue = parseInt(checkboxArray[i].value)
+    console.log(foodValue);
+    foodSum = foodSum + foodValue;
+    console.log(foodSum);
+  }
   days = dateDiff();
   console.log(people);
   console.log(days);
   if (people === null || days === 0) {
-    alert ('please enter details')
+    $('#resultsSummary').show()
+    document.getElementById('resultsSummary').innerHTML = 'Please enter details'
     displayArray(i)
   } else {
-    alert('you have chosen ' + people + ' people ' + 'and ' + days + ' days')
+    $('#resultsSummary').show()
+    document.getElementById('resultsSummary').innerHTML = 'Here are your options for ' + people + ' people and ' + days + ' days.'
   }
-
-
   document.getElementById('arraySection').innerHTML = '';
   for (var i = 0; i < accommodationArray.length; i++) {
     // console.log(accommodationArray.length);
@@ -165,25 +164,14 @@ function openModal(){
   $('.array-img').on('click', function(){
       console.log(this.id);
       document.getElementById('navDetails').innerHTML = ' '
-      var foodValue
-      var foodSum = 0;
-
-      var checkboxArray = document.querySelectorAll('input[type=checkbox]:checked');
-      console.log(checkboxArray);
-      for (var i = 0; i < checkboxArray.length; i++) {
-        foodValue = parseInt(checkboxArray[i].value)
-
-        console.log(foodValue);
-        foodSum = foodSum + foodValue;
-
-      }
-
+      document.getElementById('bookBtn').addEventListener('click', function(){
+        //scroll to confirm section goes here
+      });
     for (var i = 0; i < accommodationArray.length; i++) {
       if (this.id === accommodationArray[i].ref) {
-  console.log(foodSum);
+        console.log(foodSum);
         console.log(days);
-         var totalPrice = (accommodationArray[i].price + foodSum) * days;
-
+        var totalPrice = (accommodationArray[i].price + foodSum) * days;
         document.getElementById('navDetails').innerHTML =
         '<img id="' + accommodationArray[i].ref + '"class="modal-img" src="'
         + accommodationArray[i].image + '"alt="image"/>'
@@ -192,19 +180,17 @@ function openModal(){
         + '<p class="modal-location-text">' + accommodationArray[i].location + '</p>'
         + '<p>$' + accommodationArray[i].price + ' per night</p>'
         + '<p>' + accommodationArray[i].description + '</p>'
-            + '<p>$' + totalPrice + ' total</p>'
+        + '<p>$' + totalPrice + ' total</p>'
       }
     }
-      $('.my-modal').show();
-      $('#arraySection').hide();
+    $('.my-modal').show();
+    $('#arraySection').hide();
   });
 }
+
 $('.closeBar').on('click', function(){
   $('.my-modal').hide();
   $('#arraySection').show();
 });
 //--------------------end display modal-------------------------//
 //--------------------confirm booking-------------------------//
-document.getElementById('bookBtn').addEventListener('click', function(){
-
-})

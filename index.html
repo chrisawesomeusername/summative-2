@@ -43,8 +43,21 @@
           <div class="dates">
             <input type="text" id="startDate" value="Start Date" class="border rounded mb-1">
             <input type="text" id="endDate" value="End Date" class="border rounded mb-1">
+            <div class="food-select">
+              <div class="checkbox">
+                <label><input id="breakfast" class="food-checkbox" type="checkbox" value="10">breakfast</label>
+              </div>
+              <div class="checkbox">
+                <label><input id="lunch" class="food-checkbox" type="checkbox" value="15">lunch</label>
+              </div>
+              <div class="checkbox">
+                <label><input id="dinner" class="food-checkbox" type="checkbox" value="20">dinner</label>
+              </div>
+            </div>
+
             <input type="button" id="calcDate" class="btn btn-sm btn-primary border-0 float-right" value="Filter Results">
           </div>
+
 
           <!-- <div class="pt-5 pb-5">
             <label class="" for="dateResult">Number of days chosen</label>
@@ -53,6 +66,9 @@
         </div>
       </div>
     </div>
+    <div id="resultsSummary" class="text-center p-3 border">
+    </div>
+
     <div id="arraySection" class="">
     </div>
 
@@ -79,8 +95,8 @@
         					<div class="tab-pane fade" id="navMap" role="tabpanel" aria-labelledby="nav-map-tab">
                   </div>
         				</div>
-        				<nav>
-        					<div class="p-0 nav nav-fill" id="navTab" role="tablist">
+        				<nav class="p-2" id="navTab">
+        					<div class="nav nav-fill" role="tablist">
         						<a class="nav-item nav-link active" id="navDetailsTab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Photos</a>
         						<a class="nav-item nav-link" id="navMapTab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-map" aria-selected="false">Map</a>
         					</div>
@@ -96,17 +112,7 @@
       <div id="modalContentBottom" class="m-3">
         <div id="modalDetails">
         </div>
-        <div class="food-select">
-          <div class="checkbox">
-            <label><input id="breakfast" class="food-checkbox" type="checkbox" value="10">breakfast</label>
-          </div>
-          <div class="checkbox">
-            <label><input id="lunch" class="food-checkbox" type="checkbox" value="15">lunch</label>
-          </div>
-          <div class="checkbox">
-            <label><input id="dinner" class="food-checkbox" type="checkbox" value="20">dinner</label>
-          </div>
-        </div>
+
         <a href="#" id="bookBtn" class="btn btn-sm btn-primary border-0 m-0">Book Now</a>
       </div>
     </div>

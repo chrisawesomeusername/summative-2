@@ -32,6 +32,9 @@
 #arraySection {
   font-size: 12px; }
 
+#resultsSummary {
+  font-size: 12px; }
+
 .card-block {
   text-align: right; }
 
@@ -82,6 +85,9 @@
   width: 100%;
   height: 30px;
   padding-left: 7px; }
+
+#resultsSummary {
+  display: none; }
 
 .btn {
   background-color: #169BCC;
