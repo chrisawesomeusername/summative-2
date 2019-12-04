@@ -46,6 +46,10 @@
   color: #169BCC;
   text-transform: capitalize; }
 
+.main-modal-section {
+  height: 100%;
+  overflow: scroll; }
+
 #nav-tab {
   background-color: #169BCC; }
 
@@ -116,5 +120,8 @@
   top: 0px;
   background-color: white;
   width: 100vw; }
+
+.confirm-section {
+  display: none; }
 
 /*# sourceMappingURL=style.css.map */

@@ -57,12 +57,6 @@
 
             <input type="button" id="calcDate" class="btn btn-sm btn-primary border-0 float-right" value="Filter Results">
           </div>
-
-
-          <!-- <div class="pt-5 pb-5">
-            <label class="" for="dateResult">Number of days chosen</label>
-            <input type="text" id="dateResult" class="form-control">
-          </div> -->
         </div>
       </div>
     </div>
@@ -72,50 +66,57 @@
     <div id="arraySection" class="">
     </div>
 
-    <div class="my-modal" id="">
-      <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <ul class="navbar-nav">
-          <li class="active">
-            <a class="nav-link" href="index.html"><img src="images/pure-new-zealand-logo.svg" class="main-logo" alt=""></a>
-          </li>
-        </ul>
-        <div class="closeBar text-center">
-          &times;
-        </div>
-      </nav>
+    <div class="my-modal">
+      <div class="main-modal-section">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+          <ul class="navbar-nav">
+            <li class="active">
+              <a class="nav-link" href=""><img src="images/pure-new-zealand-logo.svg" class="main-logo" alt=""></a>
+            </li>
+          </ul>
+          <div class="closeBar text-center">
+            &times;
+          </div>
+        </nav>
 
-      <div id="modalContentTop" class="">
-        <div id="tabs" class="">
-        	<div class="container">
-        		<div class="row">
-        			<div class="">
-                <div class="tab-content " id="navTabContent">
-                  <!-- where the map and photos go -->
-        					<div class="tab-pane fade show active" id="navDetails" role="tabpanel" aria-labelledby="nav-details-tab"></div>
-        					<div class="tab-pane fade" id="navMap" role="tabpanel" aria-labelledby="nav-map-tab"></div>
+        <div id="modalContentTop" class="">
+          <div id="tabs" class="">
+            <div class="container">
+              <div class="row">
+                <div class="">
+                  <div class="tab-content " id="navTabContent">
+                    <!-- where the map and photos go -->
+                    <div class="tab-pane fade show active" id="navDetails" role="tabpanel" aria-labelledby="nav-details-tab"></div>
+                    <div class="tab-pane fade" id="navMap" role="tabpanel" aria-labelledby="nav-map-tab"></div>
 
-        				</div>
-        				<nav class="p-2" id="navTab">
-        					<div class="nav nav-fill" role="tablist">
-                    <!-- links to switch between map and photos sections -->
-        						<a class="nav-item nav-link active" id="navDetailsTab" data-toggle="tab" href="#navDetails" role="tab" aria-controls="nav-home" aria-selected="true">Photos</a>
-        						<a class="nav-item nav-link" id="navMapTab" data-toggle="tab" href="#navMap" role="tab" aria-controls="nav-map" aria-selected="false">Map</a>
-        					</div>
-        				</nav>
-        			</div>
-        		</div>
-        	</div>
+                  </div>
+                  <nav class="p-2" id="navTab">
+                    <div class="nav nav-fill" role="tablist">
+                      <!-- links to switch between map and photos sections -->
+                      <a class="nav-item nav-link active" id="navDetailsTab" data-toggle="tab" href="#navDetails" role="tab" aria-controls="nav-home" aria-selected="true">Photos</a>
+                      <a class="nav-item nav-link" id="navMapTab" data-toggle="tab" href="#navMap" role="tab" aria-controls="nav-map" aria-selected="false">Map</a>
+                    </div>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <div id="modalContentBottom" class="m-3">
+          <div id="modalDetails">
+          </div>
+          <a href="#" id="bookBtn" class="btn btn-sm btn-primary border-0 m-0">Book Now</a>
+        </div>
+
       </div>
 
-      <div id="modalContentBottom" class="m-3">
-        <div id="modalDetails">
-        </div>
-        <a href="#" id="bookBtn" class="btn btn-sm btn-primary border-0 m-0">Book Now</a>
-      </div>
       <div class="confirm-section bg-light">
         <div class="container p-4">
           <p>Here are your booking details</p>
+          <div id="confirmDetails">
+
+          </div>
         </div>
         <a href="#" id="changeDetailsBtn" class="btn btn-sm btn-primary border-0 m-0">change your selection</a>
 

@@ -44,9 +44,9 @@ var accommodationArray = [
     name: 'waikanae beach motel',
     image: 'images/waikanae-beach.jpg',
     type: 'motel',
-    description: '',
-    location: '',
-    // longAndLat : {lat : ,lng : },
+    description: 'Terry and Marg Candy, your friendly owner/operators, have lived in Gisborne for many years and have an extensive local knowledge at your service.Our motel is located across the road from beautiful Waikanae Beach and is walking distance to Gisborne City. Close to restaurants, clubs/cafés, i-SITE and a golf course.We have 15 units of various sizes to suit everyone\'s needs. All units are serviced daily, fully self-contained and are completely smokefree (covered smoking areas available).',
+    location: 'waikanae',
+    longAndLat : {lat : -40.866245 ,lng : 175.0308821 },
     minPeople: 2,
     maxPeople: 4,
     price: 90,
@@ -56,11 +56,11 @@ var accommodationArray = [
   {
     ref: 'a4',
     name: 'is a house',
-    image: 'images/house.jpg',
+    image: 'images/otaki-house.jpg',
     type: 'house',
-    description: '',
-    location: '',
-    // longAndLat : {lat : ,lng : },
+    description: 'A new modern bach in the perfect location, the gateway to the Tararua Forest Park for tramping and day walks. A peaceful, sunny and extremely comfortable fully furnished place to relax in. Come and enjoy a spa under the stars, or read a book in the sun. Cold bubbles on arrival and breakfast provided. A perfect getaway for two, with only the river and native birds to be heard',
+    location: 'otaki',
+    longAndLat : {lat : -40.7592769,lng : 175.1372467},
     minPeople: 1,
     maxPeople: 4,
     price: 240,
@@ -102,7 +102,7 @@ function dateDiff() {
   console.log(days);
   return days;
 }
-//----------------------end date picker-----------------------//
+ //----------------------end date picker-----------------------//
 //----------------------display array-------------------------//
 function myArray(){
   document.getElementById('arraySection').innerHTML = '';
@@ -134,7 +134,7 @@ function displayArray(j){
   + '</div>';
 openModal();
 }
-//----------------------end display array-------------------------//
+ //----------------------end display array-------------------//
 //----------------------filter tool-------------------------//
 document.getElementById('calcDate').addEventListener('click', function(){
   people = document.getElementById('people').value;
@@ -169,17 +169,29 @@ document.getElementById('calcDate').addEventListener('click', function(){
     }
   }
 });
-//----------------------end filter tool-------------------------//
+ //----------------------end filter tool-----------------------//
 //----------------------display modal-------------------------//
+
 function openModal(){
   $('.array-img').on('click', function(){
-      console.log(this.id);
-      document.getElementById('navDetails').innerHTML = ' '
+    console.log(this.id);
+    $('.my-modal').show();
+    $('#arraySection').hide();
+    document.getElementById('navDetails').innerHTML = ' '
     for (var i = 0; i < accommodationArray.length; i++) {
       if (this.id === accommodationArray[i].ref) {
+        var marker = new google.maps.Marker({
+          position: accommodationArray[i].longAndLat,
+          map: map,
+        });
+          map.setZoom(14)
+          map.panTo(accommodationArray[i].longAndLat);
         console.log(foodSum);
         console.log(days);
-        var totalPrice = (accommodationArray[i].price + foodSum) * days;
+
+        var totalPrice=0;
+        totalPrice = (accommodationArray[i].price + foodSum) * days;
+
         document.getElementById('navDetails').innerHTML =
         '<img id="' + accommodationArray[i].ref + '"class="modal-img" src="'
         + accommodationArray[i].image + '"alt="image"/>'
@@ -187,40 +199,50 @@ function openModal(){
         '<p class="mb-0" id="modalTitle">' + accommodationArray[i].name + '</p>'
         + '<p class="modal-location-text">' + accommodationArray[i].location + '</p>'
         + '<p>$' + accommodationArray[i].price + ' per night</p>'
-        + '<p>' + accommodationArray[i].description + '</p>'
-        + '<p>$' + totalPrice + ' total</p>'
+        + '<p>' + accommodationArray[i].description + '</p>';
+        if (totalPrice > 0 ) {
+          document.getElementById('modalDetails').innerHTML +=
+          '<p>$' + totalPrice + ' total</p>'
+          confirmBooking();
+        }
       }
     }
-    $('.my-modal').show();
-    $('#arraySection').hide();
   });
 }
 
-$('.closeBar').on('click', function(){
+  //---------------------confirm booking--------------------------//
+function confirmBooking(){
+  document.getElementById('bookBtn').addEventListener('click', function(){
+    $('.confirm-section').show();
+    $('html,body').animate({
+      scrollTop: $(".confirm-section").offset().top}, 'fast');
+      console.log(days);
+      console.log(people);
+      console.log(foodSum);
+      // console.log(totalPrice);
+      document.getElementById('confirmDetails').innerHTML =
+      '<p>' + days + ' days</p>'
+      + '<p>' + people + ' people</p>'
+
+
+      document.getElementById('changeDetailsBtn').addEventListener('click', function(){
+        $('.my-modal').hide();
+        $('#arraySection').show();
+      })
+  });
+}
+   //--------------------end confirm booking-----------------------//
+
+
+$('.closeBar, modalLogo').on('click', function(){
   $('.my-modal').hide();
   $('#arraySection').show();
 });
  //--------------------end display modal-------------------------//
-//---------------------confirm booking--------------------------//
-document.getElementById('bookBtn').addEventListener('click', function(){
-  $('.confirm-section').show();
-  $('html,body').animate({
-    scrollTop: $(".confirm-section").offset().top}, 'fast');
-    console.log(days);
-    console.log(people);
-    console.log(foodSum);
-    // console.log(totalPrice);
-    document.getElementById('changeDetailsBtn').addEventListener('click', function(){
-      $('.my-modal').hide();
-      $('#arraySection').show();
-    })
-});
-
- //--------------------end confirm booking-----------------------//
 //---------------------maps-------------------------------------//
 function initMap() {
   map = new google.maps.Map(document.getElementById('navMap'), {
     center: {lat: -41.3052685, lng: 175.7267386},
     zoom: 5
   });
-}
+};
