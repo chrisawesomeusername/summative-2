@@ -1,14 +1,14 @@
 .filter-tool-section{
-  font-size: 12px;
+  font-size: 13px;
 }
 #people{
-  font-size: 12px;
+  font-size: 13px;
 }
 #arraySection{
-  font-size: 12px;
+  font-size: 13px;
 }
 #resultsSummary{
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .card-block{
@@ -26,4 +26,10 @@
 
 .title-text{
   text-transform: capitalize;
+}
+.confirm-head-text{
+  font-size: 13px;
+}
+#confirmResults, #totalPriceFinal{
+  text-align: right;
 }

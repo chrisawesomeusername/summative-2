@@ -2,6 +2,7 @@
 @import 'images';
 @import 'text';
 @import 'modalTab';
+@import 'mediaQuery';
 
 
 
@@ -64,4 +65,12 @@
 
 .confirm-section{
   display: none;
+}
+
+#finalConfirm{
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
 }

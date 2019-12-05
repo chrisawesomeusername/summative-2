@@ -1,0 +1,18 @@
+@media only screen and (min-width: 600px) {
+  .content-container{
+    margin: 0 20%;
+  }
+  .card{
+    margin: 0px;
+    padding: 0px;
+  }
+}
+@media only screen and (min-width: 769px) {
+  .card-img-top{
+    width: 100%;
+    margin: auto;
+  }
+  .btn{
+    font-size: 20px;
+  }
+}

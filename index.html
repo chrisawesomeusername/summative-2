@@ -14,130 +14,160 @@
     <title>Tourism New Zealand</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-      <ul class="navbar-nav">
-        <li class="active">
-          <a class="nav-link" href="index.html"><img src="images/pure-new-zealand-logo.svg" class="main-logo" alt=""></a>
-        </li>
-      </ul>
-    </nav>
-    <div class="banner-section">
-      <img src="images/banner-images/img1.jpg" alt="">
-    </div>
-    <div class="filter-tool-section">
-      <div class="title-bar bg-dark text-light text-center">
-        <p class="mb-0 p-1">Accommodation Finder</p>
-      </div>
-      <div class="filter-tool-content row m-0 p-2 rounded-bottom">
-        <div class="tool-title mb-0 p-0 col-5">
-          <p>Use our filtering tool to find your ideal accommodation type</p>
-        </div>
-        <div class="col-7 p-0 pl-2 booking-dropdown">
-          <select id="people" class="form-control border rounded mb-1" name="people">
-            <option value="">How many people?</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-          </select>
-          <div class="dates">
-            <input type="text" id="startDate" value="Start Date" class="border rounded mb-1">
-            <input type="text" id="endDate" value="End Date" class="border rounded mb-1">
-            <div class="food-select">
-              <div class="checkbox">
-                <label class="mr-3"><input id="breakfast" class="food-checkbox" type="checkbox" value="10">Breakfast</label>
+    <div class="master-container">
 
-
-                <label class="mr-3"><input id="lunch" class="food-checkbox" type="checkbox" value="15">Lunch</label>
-
-
-                <label class="mr-3"><input id="dinner" class="food-checkbox" type="checkbox" value="20">Dinner</label>
-
-            </div>
-
-            <input type="button" id="calcDate" class="btn btn-sm btn-primary border-0 float-right" value="Filter Results">
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-    <div id="resultsSummary" class="text-center p-3 border">
-    </div>
-
-    <div id="arraySection" class="title-text">
-    </div>
-
-    <div class="my-modal">
-      <div class="main-modal-section">
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
           <ul class="navbar-nav">
             <li class="active">
-              <a class="nav-link"><img src="images/pure-new-zealand-logo.svg" id="modalLogo" class="main-logo" alt=""></a>
+              <a class="nav-link" href="index.html"><img src="images/pure-new-zealand-logo.svg" class="main-logo" alt=""></a>
             </li>
           </ul>
-          <div class="closeBar text-center">
-            &times;
-          </div>
         </nav>
+        <div class="banner-section">
+          <img src="images/banner-images/img1.jpg" alt="">
+        </div>
+
+        <div class="filter-tool-section">
+          <div class="title-bar bg-dark text-light text-center">
+            <p class="mb-0 p-1">Accommodation Finder</p>
+          </div>
 
 
 
-        <div id="modalContentTop" class="">
-          <div id="tabs" class="">
-            <div class="container">
-              <div class="row">
-                <div class="">
-                  <div class="tab-content " id="navTabContent">
-                    <!-- where the map and photos go -->
-                    <div class="tab-pane fade show active" id="navDetails" role="tabpanel" aria-labelledby="nav-details-tab"></div>
-                    <div class="tab-pane fade" id="navMap" role="tabpanel" aria-labelledby="nav-map-tab"></div>
+          <div class="content-container">
+          <div class="filter-tool-content row m-0 p-2 rounded-bottom">
+            <div class="tool-title mb-0 p-0 col-5">
+              <p>Use our filtering tool to find your ideal accommodation type</p>
+            </div>
+            <div class="col-7 p-0 pl-2 booking-dropdown">
+              <select id="people" class="form-control border rounded mb-1" name="people">
+                <option value="">How many people?</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+              <div class="dates">
+                <input type="text" id="startDate" value="Start Date" class="border rounded mb-1">
+                <input type="text" id="endDate" value="End Date" class="border rounded mb-1">
+              </div>
+                <div class="food-select">
+                  <div class="checkbox">
+                    <label class="mr-3"><input id="breakfast" class="food-checkbox" type="checkbox" value="10">Breakfast</label>
 
-                  </div>
-                  <nav class="p-0" id="navTab">
-                    <div class="nav nav-fill" role="tablist">
-                      <!-- links to switch between map and photos sections -->
-                      <a class="nav-item nav-link active p-1" id="navDetailsTab" data-toggle="tab" href="#navDetails" role="tab" aria-controls="nav-home" aria-selected="true">Photos</a>
-                      <a class="nav-item nav-link p-1" id="navMapTab" data-toggle="tab" href="#navMap" role="tab" aria-controls="nav-map" aria-selected="false">Map</a>
+
+                    <label class="mr-3"><input id="lunch" class="food-checkbox" type="checkbox" value="15">Lunch</label>
+
+
+                    <label class="mr-3"><input id="dinner" class="food-checkbox" type="checkbox" value="20">Dinner</label>
+
+                </div>
+              </div>
+
+                <input type="button" id="calcDate" class="btn btn-sm btn-primary border-0 float-right" value="Filter Results">
+              </div>
+            </div>
+
+
+        <div id="resultsSummary" class="text-center p-3 border">
+        </div>
+
+        <div id="arraySection" class="title-text">
+        </div>
+
+        <div class="my-modal">
+          <div class="main-modal-section">
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+              <ul class="navbar-nav">
+                <li class="active">
+                  <a class="nav-link"><img src="images/pure-new-zealand-logo.svg" id="modalLogo" class="main-logo" alt=""></a>
+                </li>
+              </ul>
+              <div class="closeBar text-center">
+                &times;
+              </div>
+            </nav>
+
+
+
+            <div id="modalContentTop" class="">
+              <div id="tabs" class="">
+                <div class="container">
+                  <div class="row">
+                    <div class="">
+                      <div class="tab-content " id="navTabContent">
+                        <!-- where the map and photos go -->
+                        <div class="tab-pane fade show active" id="navDetails" role="tabpanel" aria-labelledby="nav-details-tab"></div>
+                        <div class="tab-pane fade" id="navMap" role="tabpanel" aria-labelledby="nav-map-tab"></div>
+
+                      </div>
+                      <nav class="p-0" id="navTab">
+                        <div class="nav nav-fill" role="tablist">
+                          <!-- links to switch between map and photos sections -->
+                          <a class="nav-item nav-link active p-1" id="navDetailsTab" data-toggle="tab" href="#navDetails" role="tab" aria-controls="nav-home" aria-selected="true">Photos</a>
+                          <a class="nav-item nav-link p-1" id="navMapTab" data-toggle="tab" href="#navMap" role="tab" aria-controls="nav-map" aria-selected="false">Map</a>
+                        </div>
+                      </nav>
                     </div>
-                  </nav>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div id="modalContentBottom" class="m-3">
-          <div id="modalDetails">
+            <div id="modalContentBottom" class="m-3">
+              <div id="modalDetails">
+              </div>
+              <a href="#" id="bookBtn" class="btn btn-sm btn-primary border-0 m-0">Book Now</a>
+            </div>
+
           </div>
-          <a href="#" id="bookBtn" class="btn btn-sm btn-primary border-0 m-0">Book Now</a>
+
+          <div class="confirm-section bg-dark">
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+              <ul class="navbar-nav">
+                <li class="active">
+                  <a class="nav-link" href="index.html"><img src="images/pure-new-zealand-logo.svg" class="main-logo" alt=""></a>
+                </li>
+              </ul>
+            </nav>
+            <div class="banner-section">
+              <img src="images/banner-images/img1.jpg" alt="">
+            </div>
+            <div class="title-bar bg-dark text-light text-center confirm-head-text">
+              <p class="mb-0 p-1">Here are your booking details</p>
+            </div>
+            <div class="container p-5">
+              <div class="row bg-light p-2">
+                <div class="col-6 d-block p-0">
+                  <p class="title-text">stay duration</p>
+                  <p class="title-text">number of people</p>
+                  <p class="title-text">food options</p>
+                </div>
+
+                <div class="col-6 p-0" id="confirmResults">
+                </div>
+              </div>
+              <div class="row pt-3 bg-light p-2">
+                <div class="col-6 p-0">
+                  <p class="title-text col-6 p-0">total price</p>
+                </div>
+                <div class="col-6 p-0 m-0" id="totalPriceFinal">
+                </div>
+
+              </div>
+            </div>
+            <div class="">
+              <a id="finalConfirm" class="btn btn-sm btn-primary border-0 m-0">Confirm Booking</a>
+            </div>
+
+          </div>
         </div>
 
       </div>
 
-      <div class="confirm-section bg-light">
-        <div class="container p-4">
-          <p class="text-center">Here are your booking details</p>
-          <div id="confirmDetails" class="row">
-            <div class="col-6 d-block">
-              <p class="title-text">stay duration</p>
-              <p class="title-text">number of people</p>
-              <p class="title-text">food options</p>
-              <p class="title-text">total price</p>
 
-            </div>
-            <div class="col-6">
-              <p id=""></p>
-              <p id=""></p>
-              <p id=""></p>
-              <p id=""></p>
-            </div>
-
-          </div>
-        </div>
-        <!-- <a href="#" id="changeDetailsBtn" class="btn btn-sm btn-primary border-0 m-0">change your selection</a> -->
-
-      </div>
     </div>
+
 
 
 
@@ -148,6 +178,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.4.3/dist/sweetalert2.all.min.js"></script>
     <script src="js/config.json" charset="utf-8"></script>
     <script src="js/script.js"></script>
   </body>

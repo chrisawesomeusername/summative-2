@@ -174,7 +174,7 @@ document.getElementById('calcDate').addEventListener('click', function(){
 });
  //----------------------end filter tool-----------------------//
 //----------------------display modal-------------------------//
-var totalPrice=0;
+var totalPrice = 0;
 var checkboxArray = [];
 function openModal(){
   $('.array-img').on('click', function(){
@@ -223,21 +223,28 @@ function openModal(){
             $('.confirm-section').show();
             $('html,body').animate({
               scrollTop: $(".confirm-section").offset().top}, 'fast');
+
               console.log(days);
               console.log(people);
               console.log(foodSum);
               console.log(totalPrice);
-            //   document.getElementById('confirmDetails').innerHTML =
-            //
-            //    // '<p class="title-text">' + accommodationArray[i].name + '  </p>'
-            //   '<p class="title-text">Stay duration ' + days + ' days </p>'
-            //   + '<p class="title-text">' + people + ' people</p>'
-            //   for (var i = 0; i < checkboxArray.length; i++) {
-            //   document.getElementById('confirmDetails').innerHTML +=
-            //   '<p class="title-text">' + checkboxArray[i].id + '</p>'
-            // }
-            // document.getElementById('confirmDetails').innerHTML +=
-            // '<p class="title-text">$' + totalPrice + ' total</p>';
+
+
+              document.getElementById('confirmResults').innerHTML +=
+              '<p class="title-text">' + days + ' days </p>'
+              + '<p class="title-text">' + people + ' people</p>'
+              for (var i = 0; i < checkboxArray.length; i++) {
+                if (foodSum.value < 0) {
+                  document.getElementById('confirmResults').innerHTML +=
+                  '<p class="title-text">No food selected</p>'
+                } else {
+                  document.getElementById('confirmResults').innerHTML +=
+                  '<p class="title-text">' + checkboxArray[i].id + '</p>'
+                  }
+                }
+
+              document.getElementById('totalPriceFinal').innerHTML +=
+              '<p class="title-text">$' + totalPrice + ' total</p>';
           });
         }
         //--------------------end confirm booking-----------------------//
@@ -249,6 +256,15 @@ $('.closeBar, #modalLogo').on('click', function(){
   $('.my-modal').hide();
   $('#arraySection').show();
 });
+$('#finalConfirm').on('click',function(){
+  Swal.fire({
+    title: 'Booking confirmed!',
+    text: 'Your booking number is 4577GHT',
+    icon: 'success',
+    confirmButtonText: 'Cool'
+  })
+});
+
  //--------------------end display modal-------------------------//
 //---------------------maps-------------------------------------//
 function initMap() {
