@@ -10,7 +10,7 @@ document.getElementsByTagName('body')[0].appendChild(script);
 
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
-}
+};
 
 var accommodationArray = [
   {
@@ -145,7 +145,7 @@ document.getElementById('calcDate').addEventListener('click', function(){
   foodSum = 0;
   var foodValue = 0;
   for (var i = 0; i < checkboxArray.length; i++) {
-    foodValue = parseInt(checkboxArray[i].value)
+    foodValue = parseInt(checkboxArray[i].value);
     console.log(foodValue);
     foodSum = foodSum + foodValue;
     console.log(foodSum);
@@ -154,21 +154,21 @@ document.getElementById('calcDate').addEventListener('click', function(){
   console.log(people);
   console.log(days);
   if (people === null || days === 0) {
-    $('#resultsSummary').show()
-    document.getElementById('resultsSummary').innerHTML = 'Please enter details'
-    displayArray(i)
+    $('#resultsSummary').show();
+    document.getElementById('resultsSummary').innerHTML = 'Please enter details';
+    displayArray(i);
   } else {
-    $('#resultsSummary').show()
-    document.getElementById('resultsSummary').innerHTML = 'Here are your options for ' + people + ' people and ' + days + ' days.'
+    $('#resultsSummary').show();
+    document.getElementById('resultsSummary').innerHTML = 'Here are your options for ' + people + ' people and ' + days + ' days.';
   }
   document.getElementById('arraySection').innerHTML = '';
-  for (var i = 0; i < accommodationArray.length; i++) {
+  for (var j = 0; j < accommodationArray.length; j++) {
     // console.log(accommodationArray.length);
-    if ((parseInt(people) >= accommodationArray[i].minPeople)
-    && (parseInt(people) <= accommodationArray[i].maxPeople)
-    && (days >= accommodationArray[i].minStay)
-    && (days <= accommodationArray[i].maxStay)){
-      displayArray(i);
+    if ((parseInt(people) >= accommodationArray[j].minPeople)
+    && (parseInt(people) <= accommodationArray[j].maxPeople)
+    && (days >= accommodationArray[j].minStay)
+    && (days <= accommodationArray[j].maxStay)){
+      displayArray(j);
     }
   }
 });
@@ -182,7 +182,7 @@ function openModal(){
     $('.my-modal').show();
     $('#arraySection').hide();
 
-    document.getElementById('navDetails').innerHTML = ' '
+    document.getElementById('navDetails').innerHTML = ' ';
 
     for (var i = 0; i < accommodationArray.length; i++) {
       if (this.id === accommodationArray[i].ref) {
@@ -190,7 +190,7 @@ function openModal(){
           position: accommodationArray[i].longAndLat,
           map: map,
         });
-          map.setZoom(14)
+          map.setZoom(14);
           map.panTo(accommodationArray[i].longAndLat);
         console.log(foodSum);
         console.log(days);
@@ -199,7 +199,7 @@ function openModal(){
         totalPrice = (accommodationArray[i].price + foodSum) * days;
 
         document.getElementById('navDetails').innerHTML =
-        '<img id="' + accommodationArray[i].ref + '"class="modal-img" src="' + accommodationArray[i].image + '"alt="image"/>'
+        '<img id="' + accommodationArray[i].ref + '"class="modal-img" src="' + accommodationArray[i].image + '"alt="image"/>';
         document.getElementById('modalDetails').innerHTML =
         '<p class="mb-0" id="modalTitle">' + accommodationArray[i].name + '</p>'
         + '<p class="modal-location-text">' + accommodationArray[i].location + '</p>'
@@ -207,7 +207,7 @@ function openModal(){
         + '<p>' + accommodationArray[i].description + '</p>';
         if (totalPrice > 0 ) {
           document.getElementById('modalDetails').innerHTML +=
-          '<p>$' + totalPrice + ' total</p>'
+          '<p>$' + totalPrice + ' total</p>';
           confirmBooking();
         }
         //---------------------confirm booking--------------------------//
@@ -232,14 +232,14 @@ function openModal(){
 
               document.getElementById('confirmResults').innerHTML +=
               '<p class="title-text">' + days + ' days </p>'
-              + '<p class="title-text">' + people + ' people</p>'
+              + '<p class="title-text">' + people + ' people</p>';
               for (var i = 0; i < checkboxArray.length; i++) {
                 if (foodSum.value < 0) {
                   document.getElementById('confirmResults').innerHTML +=
-                  '<p class="title-text">No food selected</p>'
+                  '<p class="title-text">No food selected</p>';
                 } else {
                   document.getElementById('confirmResults').innerHTML +=
-                  '<p class="title-text">' + checkboxArray[i].id + '</p>'
+                  '<p class="title-text">' + checkboxArray[i].id + '</p>';
                   }
                 }
 
@@ -262,7 +262,7 @@ $('#finalConfirm').on('click',function(){
     text: 'Your booking number is 4577GHT',
     icon: 'success',
     confirmButtonText: 'Cool'
-  })
+  });
 });
 
  //--------------------end display modal-------------------------//
@@ -272,5 +272,5 @@ function initMap() {
     center: {lat: -41.3052685, lng: 175.7267386},
     zoom: 5
   });
-};
+}
 //---------------------end maps-------------------------------------//
