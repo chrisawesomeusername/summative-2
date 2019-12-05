@@ -8,7 +8,9 @@ var script = document.createElement('script');
 script.src = 'https://maps.googleapis.com/maps/api/js?key=' + myKey[0].key + '&callback=initMap';
 document.getElementsByTagName('body')[0].appendChild(script);
 
-
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+}
 
 var accommodationArray = [
   {
@@ -30,8 +32,8 @@ var accommodationArray = [
     name: 'nomads hostel',
     image: 'images/nomads.jpg',
     type: 'hostel',
-    description: '',
-    location: '',
+    description: 'Our Auckland Backpackers is within a 10-minute walk from Spark Arena, The Sky Tower and Viaduct Harbour. Britomart Train Station is an easy 5-minute walk from the hostel and Queen Street is just around the corner.This beautiful historic hostel in Auckland is jam-packed with all the latest mod cons a backpacker needs in a hostel and more. Facilities at Nomads Auckland include 24 hour reception, free tea and coffee, free wifi*, free luggage storage*, a sauna, a travel desk, lockers in all rooms, and a rooftop kitchen with panoramic views of the city and harbor. There’s a large communal lounge with a TV (DVD’s are available from reception), plenty of bean bags to chill out in, board games, a book exchange and vending machines for drinks and snacks!',
+    location: 'auckland',
     longAndLat : {lat : -36.845971 ,lng : 174.7651853},
     minPeople: 1,
     maxPeople: 1,
@@ -55,7 +57,7 @@ var accommodationArray = [
   },
   {
     ref: 'a4',
-    name: 'is a house',
+    name: 'otaki house',
     image: 'images/otaki-house.jpg',
     type: 'house',
     description: 'A new modern bach in the perfect location, the gateway to the Tararua Forest Park for tramping and day walks. A peaceful, sunny and extremely comfortable fully furnished place to relax in. Come and enjoy a spa under the stars, or read a book in the sun. Cold bubbles on arrival and breakfast provided. A perfect getaway for two, with only the river and native birds to be heard',
@@ -119,15 +121,15 @@ function displayArray(j){
   document.getElementById('arraySection').innerHTML
   += '<div class="card rounded-0 p-2 mb-2">'
     + '<div class="row m-0">'
-      + '<div class="col-5 p-0">'
+      + '<div class="col-5 p-0" id="cardClick">'
         + '<img id="' + accommodationArray[j].ref + '"class="array-img" src="'
         + accommodationArray[j].image + '"alt="image"/>'
       + '</div>'
       + '<div class="col-7 p-0">'
         + '<div class="card-block pr-0">'
           + '<p class="card-title m-0">' + accommodationArray[j].name + '</p>'
+          + '<p class="card-title m-0">' + accommodationArray[j].location + '</p>'
           + '<p class="card-title m-0">$' + accommodationArray[j].price + ' per night</p>'
-          + '<a href="#" class="btn btn-sm btn-primary border-0 m-0">Read More</a>'
         + '</div>'
       + '</div>'
     + '</div>'
@@ -140,6 +142,7 @@ document.getElementById('calcDate').addEventListener('click', function(){
   people = document.getElementById('people').value;
   var checkboxArray = document.querySelectorAll('input[type=checkbox]:checked');
   console.log(checkboxArray);
+  foodSum = 0;
   var foodValue = 0;
   for (var i = 0; i < checkboxArray.length; i++) {
     foodValue = parseInt(checkboxArray[i].value)
@@ -171,13 +174,16 @@ document.getElementById('calcDate').addEventListener('click', function(){
 });
  //----------------------end filter tool-----------------------//
 //----------------------display modal-------------------------//
-
+var totalPrice=0;
+var checkboxArray = [];
 function openModal(){
   $('.array-img').on('click', function(){
     console.log(this.id);
     $('.my-modal').show();
     $('#arraySection').hide();
+
     document.getElementById('navDetails').innerHTML = ' '
+
     for (var i = 0; i < accommodationArray.length; i++) {
       if (this.id === accommodationArray[i].ref) {
         var marker = new google.maps.Marker({
@@ -189,12 +195,11 @@ function openModal(){
         console.log(foodSum);
         console.log(days);
 
-        var totalPrice=0;
+
         totalPrice = (accommodationArray[i].price + foodSum) * days;
 
         document.getElementById('navDetails').innerHTML =
-        '<img id="' + accommodationArray[i].ref + '"class="modal-img" src="'
-        + accommodationArray[i].image + '"alt="image"/>'
+        '<img id="' + accommodationArray[i].ref + '"class="modal-img" src="' + accommodationArray[i].image + '"alt="image"/>'
         document.getElementById('modalDetails').innerHTML =
         '<p class="mb-0" id="modalTitle">' + accommodationArray[i].name + '</p>'
         + '<p class="modal-location-text">' + accommodationArray[i].location + '</p>'
@@ -205,36 +210,42 @@ function openModal(){
           '<p>$' + totalPrice + ' total</p>'
           confirmBooking();
         }
+        //---------------------confirm booking--------------------------//
+        function confirmBooking(){
+          document.getElementById('bookBtn').addEventListener('click', function(){
+            var checkboxArray = document.querySelectorAll('input[type=checkbox]:checked');
+
+
+            for (var i = 0; i < checkboxArray.length; i++) {
+              console.log(checkboxArray[i].id);
+            }
+           console.log(checkboxArray);
+            $('.confirm-section').show();
+            $('html,body').animate({
+              scrollTop: $(".confirm-section").offset().top}, 'fast');
+              console.log(days);
+              console.log(people);
+              console.log(foodSum);
+              console.log(totalPrice);
+            //   document.getElementById('confirmDetails').innerHTML =
+            //
+            //    // '<p class="title-text">' + accommodationArray[i].name + '  </p>'
+            //   '<p class="title-text">Stay duration ' + days + ' days </p>'
+            //   + '<p class="title-text">' + people + ' people</p>'
+            //   for (var i = 0; i < checkboxArray.length; i++) {
+            //   document.getElementById('confirmDetails').innerHTML +=
+            //   '<p class="title-text">' + checkboxArray[i].id + '</p>'
+            // }
+            // document.getElementById('confirmDetails').innerHTML +=
+            // '<p class="title-text">$' + totalPrice + ' total</p>';
+          });
+        }
+        //--------------------end confirm booking-----------------------//
       }
     }
   });
 }
-
-  //---------------------confirm booking--------------------------//
-function confirmBooking(){
-  document.getElementById('bookBtn').addEventListener('click', function(){
-    $('.confirm-section').show();
-    $('html,body').animate({
-      scrollTop: $(".confirm-section").offset().top}, 'fast');
-      console.log(days);
-      console.log(people);
-      console.log(foodSum);
-      // console.log(totalPrice);
-      document.getElementById('confirmDetails').innerHTML =
-      '<p>' + days + ' days</p>'
-      + '<p>' + people + ' people</p>'
-
-
-      document.getElementById('changeDetailsBtn').addEventListener('click', function(){
-        $('.my-modal').hide();
-        $('#arraySection').show();
-      })
-  });
-}
-   //--------------------end confirm booking-----------------------//
-
-
-$('.closeBar, modalLogo').on('click', function(){
+$('.closeBar, #modalLogo').on('click', function(){
   $('.my-modal').hide();
   $('#arraySection').show();
 });
@@ -246,3 +257,4 @@ function initMap() {
     zoom: 5
   });
 };
+//---------------------end maps-------------------------------------//

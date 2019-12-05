@@ -46,6 +46,9 @@
   color: #169BCC;
   text-transform: capitalize; }
 
+.title-text {
+  text-transform: capitalize; }
+
 .main-modal-section {
   height: 100%;
   overflow: scroll; }
@@ -71,6 +74,12 @@
 .nav-item {
   color: white;
   background-color: #169BCC; }
+
+#navDetailsTab {
+  border-right: solid 1px white; }
+
+#navMapTab {
+  border-left: solid 1px white; }
 
 #modalContentBottom {
   background: white;
@@ -102,8 +111,7 @@
   display: none; }
 
 .btn {
-  background-color: #169BCC;
-  margin-top: 15px; }
+  background-color: #169BCC; }
 
 .card {
   border-top: none;
