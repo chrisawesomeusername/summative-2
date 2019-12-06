@@ -69,6 +69,34 @@ var accommodationArray = [
     minStay: 2,
     maxStay: 15
   },
+  {
+    ref: 'a5',
+    name: 'Barrier Oasis',
+    image: 'images/aotea-lodge.jpg',
+    type: 'house',
+    description: 'Nestled on a ridge overlooking Tryphena Harbour, Barrier Oasis Garden Cottage consists of a twin bedroom, studio bedroom and bathroom, small kitchen and a sitting room opening onto a private deck, all comfortably furnished. This is a peaceful retreat situated in 10 acres of rolling hills and native bush but only a few minutes to the safe swimming beaches of Tryphena and the local pub, caf� and general store. From your cosy cottage you can venture out to go tramping, fishing, diving, horse-riding and so many other activities, all in the special environment of Great Barrier Island.',
+    location: 'Great Barrier Island',
+    longAndLat : {lat : -36.278143,lng : 175.4878145},
+    minPeople: 2,
+    maxPeople: 4,
+    price: 210,
+    minStay: 1,
+    maxStay: 10
+  },
+  {
+    ref: 'a6',
+    name: 'Heritage Collection Waitakere Estate',
+    image: 'images/heritage-collection-waitakere.jpg',
+    type: 'house',
+    description: 'Auckland\'s Waitakere Estate is Auckland\'s Rainforest Retreat located on a ridge top set in 80 acres of pristine native forest. From the Boutique Hotel\'s ridge top position there are remarkable views over the bush to Auckland City and beyond. The Boutique Hotel\'s perfect eco-setting gives nearby access to magnificent bush walks, rugged West Coast beaches and vineyards.',
+    location: 'auckland',
+    longAndLat : {lat : -36.9232202,lng : 174.5617739},
+    minPeople: 2,
+    maxPeople: 6,
+    price: 542,
+    minStay: 5,
+    maxStay: 10
+  },
 ];
 
 
@@ -119,13 +147,13 @@ function myArray(){
 myArray();
 function displayArray(j){
   document.getElementById('arraySection').innerHTML
-  += '<div class="card rounded-0 p-2 mb-2">'
+  += '<div class="card p-3 mb-2 col-sm-12 col-md-6 col-lg-3">'
     + '<div class="row m-0">'
-      + '<div class="col-5 p-0" id="cardClick">'
+      + '<div class="col-6 col-sm-6 col-md-12 p-0" id="cardClick">'
         + '<img id="' + accommodationArray[j].ref + '"class="array-img" src="'
         + accommodationArray[j].image + '"alt="image"/>'
       + '</div>'
-      + '<div class="col-7 p-0">'
+      + '<div class="col-6 col-sm-6 col-md-12 p-0">'
         + '<div class="card-block pr-0">'
           + '<p class="card-title m-0">' + accommodationArray[j].name + '</p>'
           + '<p class="card-title m-0">' + accommodationArray[j].location + '</p>'
@@ -207,7 +235,8 @@ function openModal(){
         + '<p>' + accommodationArray[i].description + '</p>';
         if (totalPrice > 0 ) {
           document.getElementById('modalDetails').innerHTML +=
-          '<p>$' + totalPrice + ' total</p>';
+          '<p>$' + totalPrice + ' total</p>'
+          +'<a href="#" id="bookBtn" class="btn btn-sm btn-primary border-0 m-0">Book Now</a>';
           confirmBooking();
         }
         //---------------------confirm booking--------------------------//

@@ -1,13 +1,13 @@
 @media only screen and (min-width: 600px) {
   .content-container{
-    margin: 0 20%;
+    margin: 0 10%;
   }
-  .card{
-    margin: 0px;
-    padding: 0px;
+  .banner-section{
+    height: 300px;
+    img{
+      height: inherit;
+    }
   }
-}
-@media only screen and (min-width: 769px) {
   .card-img-top{
     width: 100%;
     margin: auto;
@@ -15,4 +15,41 @@
   .btn{
     font-size: 20px;
   }
+  .array-img{
+    height: 200px;
+  }
+  #arraySection{
+    font-size: 25px;
+    font-weight: lighter;
+  }
+  .my-modal{
+    position: absolute;
+    margin: 0 20%;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    margin: 0px;
+  }
+  .closeBar{
+    position: absolute;
+    right: 20px;
+  }
+  .modal-img{
+    height: 500px;
+    width: 100%;
+  }
+  .tab-content{
+    width: 100%;
+  }
+  #navMap{
+    height: 500px;
+
+  }
+  #finalConfirm{
+    color: white;
+  }
+}
+@media only screen and (min-width: 769px) {
+
 }
